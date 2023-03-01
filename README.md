@@ -1,4 +1,4 @@
 # Brott
 Collaborative Project between friends, a discord bot for whatever
 
-Current devs: @Loloweb, @Driabo, @Nothooon
+Current devs: @Loloweb, @Driabo, @Nothooon, @Julowo
