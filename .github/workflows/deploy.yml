@@ -19,7 +19,7 @@ jobs:
         username: root
         key: ${{ secrets.PRIVATE_KEY }}
         script: |
-          kill $(pgrep -f 'python test.py')
+          kill $(pgrep -f 'python bot.py')
           cd /root/discord_bot/Brott
           git pull
           poetry install
