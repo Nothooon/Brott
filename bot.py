@@ -20,6 +20,8 @@ async def on_message(message):
 
     if "quoi" in message.content.lower():
         feur_controller = feur.FeurController(message)
-        feur_controller.trigger_feur_answer()
+        answer = feur_controller.create_feur_answer()
+        if answer:
+            await message.channel.send(answer)
 
 client.run(os.getenv('DISCORD_TOKEN'))
