@@ -1,5 +1,6 @@
 import os
 import discord
+from features import feur
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -17,7 +18,8 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!')
+    if "quoi" in message.content.lower():
+        feur_controller = feur.FeurController(message)
+        feur_controller.trigger_feur_answer()
 
 client.run(os.getenv('DISCORD_TOKEN'))
