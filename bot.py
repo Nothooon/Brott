@@ -1,5 +1,6 @@
 import os
 import discord
+import datetime
 from features import feur
 
 intents = discord.Intents.default()
@@ -23,6 +24,9 @@ async def on_message(message):
         feur_controller = feur.FeurController(message)
         answer = feur_controller.create_feur_answer()
         if answer:  # Depending on our luck, we don't answer "feur" and the controller returns an empty message
+            f = open("features/feurlog.csv", "a")
+            f.write(message.author.name+","+datetime.datetime.now()+"\n")
+            f.close()
             await message.channel.send(answer)
 
 client.run(os.getenv('DISCORD_TOKEN'))
