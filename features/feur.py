@@ -32,7 +32,14 @@ class FeurController:
             return "Pour feur, hop la !"
         else:
             # select a single answer at random
-            return random.choice(["Feur", "Feur !", "FEUR mec allez hop la", "bah feur du coup", "feur xD", "https://fr.wiktionary.org/wiki/feur"])
+            return random.choice([
+                "Feur",
+                "Feur !",
+                "FEUR mec allez hop la",
+                "bah feur du coup",
+                "feur xD",
+                "https://fr.wiktionary.org/wiki/feur"
+                ])
 
     # Main function, called by the bot to start the answer process.
     # An empty message is returned if we're (un)lucky
