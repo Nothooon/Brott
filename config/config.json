@@ -1,3 +1,25 @@
 {
-    "feur_frequency":0.1
+    "feur_frequency": 0.4,
+    "feur_sticker_frequency": 0.35,
+    "feur_sticker_path":"ressources/images/FeurAllezHopLa.png",
+    "feur_options": [
+        "Feur",
+        "Feur !",
+        "FEUR mec allez hop la",
+        "bah feur du coup",
+        "feur xD",
+        "https://fr.wiktionary.org/wiki/feur"
+    ],
+    "feur_special_triggers": [
+        "pourquoi",
+        "comme",
+        "quand",
+        "mais",
+        "et"
+    ],
+    "feur_special_endings": [
+        "et bim !",
+        "hop là !",
+        "boom !"
+    ]
 }
