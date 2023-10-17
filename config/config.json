@@ -1,3 +1,28 @@
 {
-    "feur_frequency":0.1
+    "feur_frequency": 0.4,
+    "feur_sticker_frequency": 0.35,
+    "feur_sticker_path":"ressources/images/FeurAllezHopLa.png",
+    "feur_options": [
+        "Feur",
+        "Feur !",
+        "FEUR mec allez hop la",
+        "bah feur du coup",
+        "feur xD",
+        "coubeh ! Euh, je veux dire, feur !",
+        "https://fr.wiktionary.org/wiki/feur",
+        "Feur Feuse Fé Fure Chi Drado Resma Feuse Driceps Drilatère Drado D Drupède Tuor Druplé De neuf Ffage Artz La La Lumpur Terback Dragénaire Drilataire Druple Dricolore Ker Gliarella Tuor Ttro Dalajara Ffé Ncer Dri Drillion Drillage Drisyllabe Drillion Rteron Drireacteur Sar Que",
+        "Attention, ta phrase contient le mot \"quoi\". Certaines personnes aiment répondre \"feur\" dans ce cas, parce que ça fait \"coiffeur\" et que c'est \"drole\". Personnellement, j'aime faire cette blague, mais je te préviens pour cette fois afin que tu ne te fasses pas avoir par quelqu'un avec moins de scrupules que moi. La prochaine fois par contre, je serai sans pitié et je répondrai \"feur\" si tu redis une phrase contenant le mot \"quoi\" et je serai hilare, fier de ma plaisanterie. Allez, à la revoyure.\n\nNote: Mon comportement est inspiré de celui du créateur de ce serveur, il adore cette blague."
+    ],
+    "feur_special_triggers": [
+        "pour",
+        "comme",
+        "quand",
+        "mais",
+        "et"
+    ],
+    "feur_special_endings": [
+        "et bim !",
+        "hop là !",
+        "boom !"
+    ]
 }
