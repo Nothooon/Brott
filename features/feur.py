@@ -33,7 +33,7 @@ class FeurController:
         special_feur_triggers = [word for word in words if word in self.config["feur_special_triggers"]]
 
         if "pourquoi" in words:
-            return "Pour feur, hop la !"
+            return "Pour feur " + random.choice(self.config["feur_special_endings"])
         elif special_feur_triggers:
             response = special_feur_triggers[0].capitalize() + " feur"
             return response + " " + random.choice(self.config["feur_special_endings"]) if random.random() <= 0.5 \
@@ -51,4 +51,4 @@ class FeurController:
             else:
                 words = self.__parse_message_words()  # Parses user's message to send the words to the answer builder
                 return self.__answer_builder(words), None  # Builds the anwser and send it to the bot
-        return ""
+        return None, None
