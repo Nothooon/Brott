@@ -24,11 +24,14 @@ async def on_message(message):
         feur_controller = feur.FeurController(message)
         answer, sticker = feur_controller.create_feur_answer()
         if answer:  # Depending on our luck, we don't answer "feur" and the controller returns an empty message
+            # Begin logging
             f = open("features/feurlog.csv", "a")
             f.write(message.author.name+","+datetime.datetime.now()+"\n")
             f.close()
-            await message.channel.send(content=answer)
-        elif sticker:
-            await message.channel.send(file=sticker)
+            # End logging
+            if sticker:
+                await message.channel.send(file=sticker)
+            else:
+                await message.channel.send(content=answer)
 
 client.run(os.getenv('DISCORD_TOKEN'))
