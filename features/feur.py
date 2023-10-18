@@ -15,7 +15,7 @@ class FeurController:
     # "Feur" answer isn't always triggered to avoid Brett's Wrath
     # This function is used to determine if the bot should anwser "feur" or not
     def __trigger_feur_answer(self):
-        return random.random() <= self.config["feur_frequency"]
+        return random.random() <= self.config["feur_frequency"] or self.message.author.name == "kaytag"
 
     def __trigger_sticker_answer(self):
         return random.random() <= self.config["feur_sticker_frequency"]
