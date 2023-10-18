@@ -37,6 +37,10 @@ Back to the discord dev portal, tick all privileged gateway intents and "Adminis
 
 ![enable permissions](https://i.imgur.com/ZVpFdGl.png)
 
+Add your bot to a server where you have administrative privileges by entering this link :
+
+https://discord.com/api/oauth2/authorize?client_id=[YOUR_CLIENT_ID_HERE]&permissions=8&scope=bot%20applications.commands 
+
 ### Install Poetry
 
 **Linux**
