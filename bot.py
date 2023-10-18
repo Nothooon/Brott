@@ -1,5 +1,7 @@
 import os
+import pandas as pd # xDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 import discord
+import datetime
 from features import feur
 
 intents = discord.Intents.default()
@@ -23,8 +25,21 @@ async def on_message(message):
         feur_controller = feur.FeurController(message)
         answer, sticker = feur_controller.create_feur_answer()
         if answer:  # Depending on our luck, we don't answer "feur" and the controller returns an empty message
-            await message.channel.send(content=answer)
-        elif sticker:
-            await message.channel.send(file=sticker)
+            # Begin logging
+            df = pd.read_csv('features/feurlog.csv', sep=',')
+            usernames = []
+            for row in df['user']:
+                usernames.append(row)
+            if message.author.name in usernames:
+                df.loc[df["user"]==message.author.name, "countfeur"] = df.loc[df["user"]==message.author.name, "countfeur"] + 1
+                df.loc[df["user"]==message.author.name, "lastfeur"] = datetime.datetime.now()
+            else:
+                df = df.append({'user': message.author.name, 'countfeur': 1, 'lastfeur': datetime.datetime.now()},ignore_index=True)
+            df.to_csv('features/feurlog.csv', sep=',', index=False)
+            # End logging
+            if sticker:
+                await message.channel.send(file=sticker)
+            else:
+                await message.channel.send(content=answer)
 
 client.run(os.getenv('DISCORD_TOKEN'))
