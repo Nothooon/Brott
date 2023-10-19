@@ -25,7 +25,7 @@ async def on_message(message):
     if "quoi" in message.content.lower():
         feur_controller = feur.FeurController(message)
         answer, sticker = feur_controller.create_feur_answer()
-        if answer:  # Depending on our luck, we don't answer "feur" and the controller returns an empty message
+        if answer or sticker:  # Depending on our luck, we don't answer "feur" and the controller returns an empty message
             logger.log_feur(message.author.name)
             if sticker:
                 await message.channel.send(file=sticker)
