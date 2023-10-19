@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v2
 
     - name: SSH into remote server and deploy
       uses: appleboy/ssh-action@master
@@ -18,11 +18,11 @@ jobs:
         host: ${{ secrets.REMOTE_HOST }}
         username: root
         key: ${{ secrets.PRIVATE_KEY }}
-        script:
+        script: |
           cd /root/discord_bot/Brott
           git checkout master
           git pull
           poetry install
-          tmux kill-session -t discord_brott
-          tmux new -s discord_brott
-          poetry run python bot.py
+          tmux kill-session -t discord_brott || true 
+          tmux new -d -s discord_brott
+          tmux send-keys -t discord_brott "poetry run python bot.py" C-m
