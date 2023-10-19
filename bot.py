@@ -34,7 +34,7 @@ async def on_message(message):
                 df.loc[df["user"]==message.author.name, "countfeur"] = df.loc[df["user"]==message.author.name, "countfeur"] + 1
                 df.loc[df["user"]==message.author.name, "lastfeur"] = datetime.datetime.now()
             else:
-                df = df.append({'user': message.author.name, 'countfeur': 1, 'lastfeur': datetime.datetime.now()},ignore_index=True)
+                df = pd.concat([df, pd.DataFrame({'user': [message.author.name], 'countfeur': [1], 'lastfeur': [datetime.datetime.now()]})])
             df.to_csv('features/feurlog.csv', sep=',', index=False)
             # End logging
             if sticker:
