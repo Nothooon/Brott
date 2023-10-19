@@ -24,5 +24,9 @@
         "et bim !",
         "hop là !",
         "boom !"
-    ]
+    ],
+    "logging":{
+        "separator":",",
+        "feur_csv_file_path":"data/feurlog.csv"
+    }
 }

@@ -143,4 +143,4 @@ dmypy.json
 *.vsix
 
 # logs
-features/feurlog.csv
+data/feurlog.csv
