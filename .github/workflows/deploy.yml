@@ -23,6 +23,7 @@ jobs:
           git checkout master
           git pull
           poetry install
+          tmux send-keys -t discord_brott C-c
           tmux kill-session -t discord_brott || true 
           tmux new -d -s discord_brott
           tmux send-keys -t discord_brott "poetry run python bot.py" C-m
