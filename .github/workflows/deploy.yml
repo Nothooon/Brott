@@ -18,9 +18,11 @@ jobs:
         host: ${{ secrets.REMOTE_HOST }}
         username: root
         key: ${{ secrets.PRIVATE_KEY }}
-        script: |
-          kill $(pgrep -f 'python bot.py')
+        script:
           cd /root/discord_bot/Brott
+          git checkout master
           git pull
           poetry install
+          tmux kill-session -t discord_brott
+          tmux new -s discord_brott
           poetry run python bot.py
