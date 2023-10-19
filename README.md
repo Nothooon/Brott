@@ -62,10 +62,10 @@ At the root of the project:
 poetry install
 ```
 
-### Run it
+### Run it using poetry
 
 ```bash
-python3 ./bot.py
+poetry run python bot.py
 ```
 
 ## Dev Tips
