@@ -1,5 +1,5 @@
 {
-    "feur_frequency": 1,
+    "feur_frequency": 0.4,
     "feur_sticker_frequency": 0.35,
     "feur_sticker_path":"ressources/images/FeurAllezHopLa.png",
     "feur_options": [
