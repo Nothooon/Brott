@@ -1,4 +1,4 @@
-import datetime
+import datetime as dt # Alias obligé pour pas confondre avec datetime.datetime
 from datetime import datetime # Logique.
 import pandas as pd  # xDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
 import json
@@ -106,12 +106,12 @@ class Logger:
             # We had one to the value of "countfeur" for the row corresponding to the message's author
             file_content.loc[file_content["user"] == message_author, "countfeur"] += 1
             # We also change the value of "lastfeur" to current date
-            file_content.loc[file_content["user"] == message_author, "lastfeur"] = datetime.datetime.now()
+            file_content.loc[file_content["user"] == message_author, "lastfeur"] = dt.datetime.now()
         # If the user has never been logged before, adding a new raw for this user
         else:
             # Adding a new row to the file with `countfleur` value initialized at 1
             new_user_row = pd.DataFrame({'user': [message_author], 'countfeur': [1],
-                                         'lastfeur': [datetime.datetime.now()]})
+                                         'lastfeur': [dt.datetime.now()]})
             file_content = pd.concat([file_content, new_user_row])
 
         # After updating the DataFrame, we save the changes in the csv file
