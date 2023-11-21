@@ -18,7 +18,7 @@ async def leaderboard(ctx):
     await ctx.response.send_message(embed=res)
 
 @tree.command(name = "feur", description = "Display the user's feur count")
-async def feur(ctx, user: discord.Member = None):
+async def feur_user(ctx, user: discord.Member = None):
     if user == None:
         user = ctx.user
     res = logger.get_user(user.name)
