@@ -12,12 +12,12 @@ tree = app_commands.CommandTree(client)
 
 logger = logging.Logger()
 
-@tree.command(name = "leaderboard", description = "Display the leaderboard", guild=discord.Object(id=239054461656498177))
+@tree.command(name = "leaderboard", description = "Display the leaderboard")
 async def leaderboard(ctx):
     res = logger.get_leaderboard()
     await ctx.response.send_message(embed=res)
 
-@tree.command(name = "feur", description = "Display the user's feur count", guild=discord.Object(id=239054461656498177))
+@tree.command(name = "feur", description = "Display the user's feur count")
 async def feur(ctx, user: discord.Member = None):
     if user == None:
         user = ctx.user
@@ -26,7 +26,7 @@ async def feur(ctx, user: discord.Member = None):
 
 @client.event
 async def on_ready():
-    await tree.sync(guild=discord.Object(id=239054461656498177))
+    await tree.sync()
     print(f'We have logged in as {client.user}')
 
 
