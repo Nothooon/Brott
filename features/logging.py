@@ -70,6 +70,8 @@ class Logger:
         # Extracting data from the csv in a DataFrame object
         file_content = pd.read_csv(self.feur_csv_path, sep=self.separator)
         # extract the data from the csv file and put it in the embed
+        embed = None
+        #print(user)
         for username, countfeur, lastfeur in zip(file_content["user"], file_content["countfeur"], file_content["lastfeur"]):
             if username == user:
                 embed=discord.Embed(
@@ -80,11 +82,11 @@ class Logger:
                 embed.add_field(name="User", value=user, inline=True)
                 embed.add_field(name="Feurs", value=countfeur, inline=True)
                 embed.add_field(name="Latest", value=discordtimestamp, inline=True)
-            else:
-                embed=discord.Embed(
-                    title="User not found or hasn't been feur'd yet.",
-                    color=discord.Color.red()
-                )
+        if embed is None: # If embed is still empty, assume user isnt in the csv
+            embed=discord.Embed(
+                title="User not found or hasn't been feur'd yet.",
+                color=discord.Color.red()
+            )
         return embed
 
 
