@@ -21,8 +21,11 @@ async def leaderboard(ctx):
 async def feur_user(ctx, user: discord.Member = None):
     if user == None:
         user = ctx.user
-    res = logger.get_user(user.name)
-    await ctx.response.send_message(embed=res)
+    if user.bot:
+        await ctx.response.send_message("A bot can't be feur'd!", ephemeral=True)
+    else:
+        res = logger.get_user(user.name)
+        await ctx.response.send_message(embed=res)
 
 @client.event
 async def on_ready():
@@ -32,7 +35,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
+    if message.author == client.user: # Useless? bot seems to ignore other bots (including itself?)
         return
 
     # The one and only necessary feature
