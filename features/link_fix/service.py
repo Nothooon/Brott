@@ -23,7 +23,6 @@ class LinkFixService:
         link_infos = self.detect_inner_links(message.content)
 
         if link_infos:
-            self.__remove_original_message(message)
             new_link = self.__generate_new_link(link_infos)
             print(f"New link: {new_link}")
             return self.__create_new_message(message, link_infos, new_link)
@@ -36,17 +35,6 @@ class LinkFixService:
             return None
 
         return LinkInfos(inner_link[0], inner_link[1], inner_link[2])
-
-    def __remove_original_message(self, message: discord.Message) -> bool:
-        try:
-            message.delete()
-        except discord.Forbidden:
-            print("Lacking the sufficient permissions to delete this message.")
-            return
-        except discord.NotFound:
-            print("The message couldn't be found. Maybe it was already deleted.")
-        except Exception:
-            print("Error when trying to delete this message.")
 
     def __generate_new_link(self, link_infos: LinkInfos) -> str:
         app_name = link_infos.app_name.strip(".com")

@@ -39,11 +39,12 @@ async def on_ready():
 
 
 @client.event
-async def on_message(message):
+async def on_message(message: discord.Message):
     if message.author == client.user:  # Useless? bot seems to ignore other bots (including itself?)
         return
 
     if link_fixer.detect_inner_links(message.content):
+        await message.delete()
         await message.channel.send(link_fixer.handle_message(message))
 
     # The one and only necessary feature
