@@ -41,6 +41,7 @@
         }
     },
     "channel_filter":{
+        "separator":",",
         "channel_csv_filepath":"data/channelBlacklist.csv"
     }
 }

@@ -51,7 +51,7 @@ class Filter:
         else :
             return "channel already allowed"
 
-    def _get_blacklist(self):
+    def get_blacklist(self):
         # Extracting data from the csv in a DataFrame object
         file_content = pd.read_csv(self.csv_filepath)
 

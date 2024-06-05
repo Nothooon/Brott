@@ -57,11 +57,10 @@ async def on_message(message: discord.Message):
         await message.delete()
         await message.channel.send(link_fixer.handle_message(message))
 
-    blacklist = filter._get_blacklist()
-    channel_id = message.channel.id
+    blacklist = filter.get_blacklist()
 
     # The one and only necessary feature
-    if "quoi" in message.content.lower() and channel_id not in blacklist:
+    if "quoi" in message.content.lower() and message.channel.id not in blacklist:
         feur_controller = feur.FeurController(message)
         answer, sticker = feur_controller.create_feur_answer()
         if answer or sticker:  # Depending on our luck, we don't answer "feur" but use a sticker instead
