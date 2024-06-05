@@ -2,7 +2,7 @@ import os
 import discord
 from discord import app_commands
 
-from features import feur, logging
+from features import feur, logging, channelFilter
 from features.link_fix import service
 
 intents = discord.Intents.default()
@@ -13,6 +13,7 @@ tree = app_commands.CommandTree(client)
 
 logger = logging.Logger()
 link_fixer = service.LinkFixService()
+filter = channelFilter.Filter()
 
 
 @tree.command(name="leaderboard", description="Display the leaderboard")
@@ -31,6 +32,15 @@ async def feur_user(ctx, user: discord.Member = None):
         res = logger.get_user(user.name)
         await ctx.response.send_message(embed=res)
 
+@tree.command(name="blacklist", description="Prevent Brott from saying feur in the current channel")
+async def blacklist(ctx):
+    res = filter.add_channel_to_ignore_list(ctx.channel.id)
+    await ctx.response.send_message(res)
+
+@tree.command(name="allow", description="allow Brott to say feur in the current channel")
+async def blacklist(ctx):
+    res = filter.remove_channel_from_ignore_list(ctx.channel.id)
+    await ctx.response.send_message(res)
 
 @client.event
 async def on_ready():
@@ -47,8 +57,11 @@ async def on_message(message: discord.Message):
         await message.delete()
         await message.channel.send(link_fixer.handle_message(message))
 
+    blacklist = filter._get_blacklist()
+    channel_id = message.channel.id
+
     # The one and only necessary feature
-    if "quoi" in message.content.lower() and message.channel.name != '👔serious-business🫂':
+    if "quoi" in message.content.lower() and channel_id not in blacklist:
         feur_controller = feur.FeurController(message)
         answer, sticker = feur_controller.create_feur_answer()
         if answer or sticker:  # Depending on our luck, we don't answer "feur" but use a sticker instead
