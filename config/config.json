@@ -39,5 +39,9 @@
             "match": "https:\/\/(twitter.com|x.com)(\/[a-zA-Z0-9_]{5,15}\/status\/[0-9]{0,20})",
             "replacement": "vxtwitter.com"
         }
+    },
+    "channel_filter":{
+        "separator":",",
+        "channel_csv_filepath":"data/channelBlacklist.csv"
     }
 }
