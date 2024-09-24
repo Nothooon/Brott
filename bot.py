@@ -17,8 +17,8 @@ filter = channelFilter.Filter()
 
 
 @tree.command(name="leaderboard", description="Display the leaderboard")
-async def leaderboard(ctx):
-    res = logger.get_leaderboard()
+async def leaderboard(ctx, sort: bool = True):
+    res = logger.get_leaderboard(sort)
     await ctx.response.send_message(embed=res)
 
 
