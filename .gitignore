@@ -142,5 +142,6 @@ dmypy.json
 # Built Visual Studio Code Extensions
 *.vsix
 
-# logs
+# data
 data/feurlog.csv
+data/channelBlacklist.csv
