@@ -37,14 +37,17 @@ class Logger:
         discordtimestamp = f"<t:{epoch}:R>" # Convert DateTime to Discord Timestamp
         return discordtimestamp
     
-    def get_leaderboard(self) -> None:
+    def get_leaderboard(self, sort) -> None:
         """This function returns the entire csv as a Discord embed.
         This is usually not recommended for big servers, however we are only like what, 20 people?
         Returns:
             discord.Embed: The embed containing the csv data
         """
         # Extracting data from the csv in a DataFrame object
-        file_content = pd.read_csv(self.feur_csv_path, sep=self.separator)
+        if sort:
+            file_content = pd.read_csv(self.feur_csv_path, sep=self.separator).sort_values(by='countfeur', ascending=False)
+        else:
+            file_content = pd.read_csv(self.feur_csv_path, sep=self.separator)
         embed=discord.Embed(
             title="Feur leaderboard",
             color=discord.Color.purple()
