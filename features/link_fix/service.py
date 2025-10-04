@@ -45,9 +45,9 @@ class LinkFixService:
     def __create_new_message(self, message: discord.Message, link_infos: LinkInfos, new_link: str) -> str:
         content = f"Lien {link_infos.app_name} détecté. Correction automatique.\n"
         content += f"{new_link}\n"
-        content += f"Post original par @{message.author.display_name}\n"
+        content += f"Post original par {message.author.mention} ({message.author.display_name})\n"
 
         message_other_content = re.sub(f"{link_infos.original_link}\\S*", "", message.content)
         if message_other_content:
-            content += f"> {message_other_content}"
+            content += f"- {message_other_content}"
         return content
