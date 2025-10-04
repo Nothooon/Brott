@@ -55,7 +55,7 @@ async def on_message(message: discord.Message):
 
     if link_fixer.detect_inner_links(message.content):
         await message.delete()
-        await message.channel.send(link_fixer.handle_message(message))
+        await message.channel.send(link_fixer.handle_message(message), silent=True)
 
     blacklist = filter.get_blacklist()
 
