@@ -31,7 +31,7 @@ class LinkFixService:
             
             return self.__create_new_message(message, link_infos_list, new_links)
 
-    def detect_inner_links(self, message: str = "") -> list[LinkInfos]:
+    def detect_inner_links(self, message: str = "") -> list[LinkInfos] | None:
         inner_links = re.finditer(r"https://(twitter.com|x.com)(/[a-zA-Z0-9_]{5,15}/status/[0-9]{0,20})", message)
 
         if not inner_links:
