@@ -54,13 +54,13 @@ class LinkFixService:
             content = f"{len(link_infos_list)} lien(s) détecté(s). Correction automatique.\n"
             for new_link in new_links:
                 content += f"{new_link}\n"
-        content += f"Post original par {message.author.mention} ({message.author.display_name})\n"
+            content += f"Post original par {message.author.mention} ({message.author.display_name})\n"
 
-        message_other_content = message.content
-        for link_infos in link_infos_list:
-            message_other_content = re.sub(f"{re.escape(link_infos.original_link)}\\S*", "", message_other_content)
+            message_other_content = message.content
+            for link_infos in link_infos_list:
+                message_other_content = re.sub(f"{re.escape(link_infos.original_link)}\\S*", "", message_other_content)
         
-        message_other_content = message_other_content.strip()
-        if message_other_content:
-            content += f"- {message_other_content}"
-        return content
+            message_other_content = message_other_content.strip()
+            if message_other_content:
+                content += f"- {message_other_content}"
+            return content
